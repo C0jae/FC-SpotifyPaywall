@@ -105,8 +105,8 @@
 			children = (
 				94363537281CB4DD00CFBCA7 /* AppDelegate.swift */,
 				94363539281CB4DD00CFBCA7 /* SceneDelegate.swift */,
-				94B477CE281CB7D0005F7671 /* PaywallViewController.swift */,
 				94B477D0281CB8EA005F7671 /* BannerInfo.swift */,
+				94B477CE281CB7D0005F7671 /* PaywallViewController.swift */,
 				94B477D2281CC1F8005F7671 /* BannerCell.swift */,
 				9436353D281CB4DD00CFBCA7 /* Main.storyboard */,
 				94363540281CB4DD00CFBCA7 /* Assets.xcassets */,
