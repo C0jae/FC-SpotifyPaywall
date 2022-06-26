@@ -17,12 +17,9 @@ class BannerCell: UICollectionViewCell {
         self.layer.cornerRadius = 16
     }
     
-    func configure(_ info: BannerInfo) {
-        titleLabel.text = info.title
-        descriptionLabel.text = info.description
-        thumbnailImageView.image = UIImage(named: info.imageName)
+    func configure(_ item: BannerInfo) {
+        titleLabel.text = item.title
+        descriptionLabel.text = item.description
+        thumbnailImageView.image = UIImage(named: item.imageName)
     }
-    
-    
-    
 }

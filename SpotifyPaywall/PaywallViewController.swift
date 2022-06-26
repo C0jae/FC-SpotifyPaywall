@@ -15,8 +15,8 @@ class PaywallViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageController: UIPageControl!
     
-    let bannerInfos: [BannerInfo] = BannerInfo.list
-    let colors: [UIColor] = [.systemRed, .systemBlue, .systemPink, .systemPurple]
+    let items: [BannerInfo] = BannerInfo.list
+    let colors: [UIColor] = [.systemPink, .systemPurple, .systemGreen, .systemYellow]
     var datasource: UICollectionViewDiffableDataSource<Section, Item>!
     
     typealias Item = BannerInfo
@@ -26,23 +26,22 @@ class PaywallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         datasource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCell", for: indexPath) as? BannerCell else { return nil }
             
-            cell.configure(item)
             cell.backgroundColor = self.colors[indexPath.item]
+            cell.configure(item)
             return cell
         })
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(bannerInfos, toSection: .main)
+        snapshot.appendItems(items, toSection: .main)
         datasource.apply(snapshot)
         
         collectionView.collectionViewLayout = layout()
-        pageController.numberOfPages = bannerInfos.count
         collectionView.alwaysBounceVertical = false
+        self.pageController.numberOfPages = items.count
     }
     
     private func layout() -> UICollectionViewCompositionalLayout {
@@ -56,7 +55,7 @@ class PaywallViewController: UIViewController {
         section.orthogonalScrollingBehavior = .groupPagingCentered
         section.interGroupSpacing = 20
         
-        section.visibleItemsInvalidationHandler = { (item, offset, env) in
+        section.visibleItemsInvalidationHandler = { (items, offset, env) in
             let index = Int((offset.x / env.container.contentSize.width).rounded(.up))
             self.pageController.currentPage = index
         }
