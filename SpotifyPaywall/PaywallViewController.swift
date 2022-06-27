@@ -16,7 +16,7 @@ class PaywallViewController: UIViewController {
     @IBOutlet weak var pageController: UIPageControl!
     
     let items: [BannerInfo] = BannerInfo.list
-    let colors: [UIColor] = [.systemPink, .systemPurple, .systemGreen, .systemYellow]
+    let colors: [UIColor] = [.systemRed, .systemOrange, .systemYellow, .systemGreen]
     var datasource: UICollectionViewDiffableDataSource<Section, Item>!
     
     typealias Item = BannerInfo
@@ -41,7 +41,7 @@ class PaywallViewController: UIViewController {
         
         collectionView.collectionViewLayout = layout()
         collectionView.alwaysBounceVertical = false
-        self.pageController.numberOfPages = items.count
+        pageController.numberOfPages = items.count
     }
     
     private func layout() -> UICollectionViewCompositionalLayout {

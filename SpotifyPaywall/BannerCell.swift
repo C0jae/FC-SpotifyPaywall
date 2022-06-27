@@ -20,6 +20,6 @@ class BannerCell: UICollectionViewCell {
     func configure(_ item: BannerInfo) {
         titleLabel.text = item.title
         descriptionLabel.text = item.description
-        thumbnailImageView.image = UIImage(named: item.imageName)
+        thumbnailImageView.image = UIImage(named: item.imageName)?.withRenderingMode(.alwaysOriginal)
     }
 }
